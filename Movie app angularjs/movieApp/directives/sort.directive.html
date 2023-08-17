@@ -1,0 +1,47 @@
+<div class="sortContainer sort disp-flex">
+    <div class="sort__label">
+       {{ sortLabel ? sortLabel : "Sort" }} 
+    </div>
+
+    <button 
+        class="sort__btn btn"
+        ng-click="showSortOptionsFlag = !showSortOptionsFlag"  
+    >   
+        <i class="btn__icon fa fa-sort"></i>
+    </button>
+</div>
+
+<div 
+    class="sort__choices choice bg-clr-white" 
+    ng-show="showSortOptionsFlag"
+    
+>
+<!--tabindex="1" 
+    ng-click="showSortOptionsFlag = true"
+    ng-blur="showSortOptionsFlag = false"
+    ng-mouseleave="showSortOptionsFlag = false" -->
+    <div ng-repeat="option in sortOptions">
+        <strong> Based on {{ option.label }}: </strong>
+        
+        <hr />
+
+        <div 
+            class="choice__asc"
+            ng-click="sortChoice(option.value, ascending)"
+        >
+            Ascending
+        </div>
+
+        <div 
+            class="choice__des"
+            ng-click="sortChoice(option.value, descending)"
+        >
+            Descending
+        </div>
+    </div>
+</div>
+
+<link 
+    rel="stylesheet" 
+    href="movieApp/directives/sort.directive.css"
+>

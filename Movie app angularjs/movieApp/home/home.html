@@ -1,0 +1,223 @@
+<section>
+    <div class="
+        searchAndFilterContainer 
+        container 
+        bg-clr-white 
+        disp-flex
+    ">
+        <search 
+            search-id="search"
+            search-name="search"
+            search-function="searchMovie()"
+            search-data="movieToSearch.name"
+        >
+        </search>
+
+        <sort
+            sort-options="options"
+            sort-val="sortValue"
+            sort-label="Sort Movie"
+            ascending="asc"
+            descending="dsc"
+        >
+        </sort>
+    </div>
+</section>
+
+<section>
+    <div class="movies">
+        <a 
+            href="#/movie/add" 
+            class="movies__add"
+        > 
+            <i class="fa-solid fa-plus"></i>
+        </a>
+
+        <table class="movies__table table bg-clr-white">
+            <
+                 class="table__header column-header">
+                <tr class="column-header__record heading-record">
+                    <th class="heading-record__field">
+                        MOVIE NAME
+                    </th>
+
+                    <th class="heading-record__field">
+                        GENRE
+                    </th>
+
+                    <th class="heading-record__field">
+                        RELEASE DATE
+                    </th>
+
+                    <th class="heading-record__field">
+                        RATING
+                    </th>
+
+                    <th class="heading-record__field">
+                        LANGUAGE
+                    </th>
+
+                    <th class="heading-record__field">
+                        VERDICT INFO
+                    </th>
+
+                    <th class="heading-record__field heading-record__field--border-right">
+                        ACTIONS
+                    </th>
+                </tr>
+            </thead>
+            
+            <tbody class="table__items movie">
+                <tr 
+                    ng-repeat="
+                        movie in movies | 
+                        filter : movieToSearch | 
+                        orderBy: sortValue
+                    "
+                    class="movie__record record"
+                >
+                    <td class="record__field field">
+                        <a 
+                            href="#/movieDescription/{{ movie.id }}" 
+                            class="clr-blue-text-underline"
+                        >
+                            {{ movie.name }}
+                        </a>
+                    </td>
+                    
+                    <td class="record__field field">
+                        {{ movie.genre }}
+                    </td>
+                    
+                    <td class="record__field field">
+                        {{ movie.releaseDate }}
+                    </td>
+                    
+                    <td class="record__field field">
+                        {{ movie.rating }}
+                    </td>
+                    
+                    <td class="record__field field">
+                        {{ movie.language }}
+                    </td>
+                    
+                    <td class="record__field field">
+                        {{ movie.verdictInfo }}
+                    </td>
+                    
+                    <td class="record__field record__field--border-right">
+                        <a href="#/movie/edit/{{ movie.id }}"> 
+                            <i class="fa fa-pencil-square mr-10px"></i> 
+                        </a>
+                    
+                        <button 
+                            class="record__field__btn btn"
+                            ng-click="deleteMovieConfirmation(movie.id)"
+                        >
+                            <i class="fa fa-trash mr-10px"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="movies__container container bg-clr-white">
+            <div 
+                ng-repeat="
+                    movie in movies | 
+                    filter : movieToSearch | 
+                    orderBy: sortValue
+                "
+                class="container__card card"
+            >
+                <div class="card__field field">
+                    <span class="field__label">
+                        Movie Name:
+                    </span>
+                
+                    <span class="field__Value ">
+                        <a 
+                            href="#/movieDescription/{{ movie.id }}" 
+                            class="clr-blue-text-underline"
+                        >
+                            {{ movie.name }}
+                        </a>
+                    </span>
+                </div>
+                
+                <div class="card__field field">
+                    <span class="field__label">
+                        Genre: 
+                    </span>
+                
+                    <span class="field__Value">
+                        {{ movie.genre }}
+                    </span>
+                </div>
+                
+                <div class="card__field field">
+                    <span class="field__label">
+                        Released Year: 
+                    </span>
+                    
+                    <span class="field__Value">
+                        {{ movie.releaseDate }}
+                    </span>
+                </div>
+                
+                <div class="card__field field">
+                    <span class="field__label">
+                        Rating: 
+                    </span>
+                
+                    <span class="field__Value">
+                        {{ movie.rating }}
+                    </span>
+                </div>
+                
+                <div class="card__field field">
+                    <span class="field__label">
+                        Language: 
+                    </span>
+                    
+                    <span class="field__Value">
+                        {{ movie.language }}
+                    </span>
+                </div>
+                
+                <div class="card__field field">
+                    <span class="field__label">
+                        Verdict Info: 
+                    </span>
+                    
+                    <span class="field__verdictInfo">
+                        {{ movie.verdictInfo }}
+                    </span>
+                </div>
+                
+                <div class="card__field field">
+                    <a href="#/movie/edit/{{ movie.id }}"> 
+                        <i class="fa fa-pencil-square mr-10px"></i> 
+                    </a>
+                
+                    <button 
+                        class="record__field__btn btn"
+                        ng-click="deleteMovieConfirmation(movie.id)"
+                    >
+                        <i class="fa fa-trash mr-10px"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<link 
+    rel="stylesheet" 
+    href="movieApp/home/home.css"
+>
+
+<link 
+    rel="stylesheet" 
+    href="movieApp/directives/search.directive.css"
+>

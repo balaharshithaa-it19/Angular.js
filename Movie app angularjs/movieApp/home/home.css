@@ -1,0 +1,104 @@
+a {
+    text-decoration: none;
+    color: #000000;
+}
+
+/* Utility Classes */
+
+.disp-flex {
+    display: flex;
+}
+
+.bg-clr-white {
+    background-color: #ffffff;
+}
+
+.mr-10px {
+    margin-right: 10px;
+}
+
+.clr-blue-text-underline {
+    text-decoration: underline;
+    color: #113399;
+}
+
+/* ///////////// */
+
+.searchAndFilterContainer {
+    margin-bottom: 20px;
+    padding: 15px 5px;
+    justify-content: space-between;
+}
+
+.movies__add {
+    display: block;
+    width: fit-content;
+    margin: auto 15px 20px auto;
+    padding: 5px;
+    background-color: #ffffff;
+    border-radius: 10px;
+}
+
+.movies__table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.heading-record__field {
+    padding: 10px;
+}
+
+.record__field {
+    text-align: center; 
+    padding: 5px;
+}
+
+.heading-record__field,
+.record__field {
+    border-bottom:.5px solid black;
+    border-right: 1px dashed black;
+}
+
+.heading-record__field--border-right,
+.record__field--border-right {
+    border-right: 0;
+}
+
+.fa-pencil-square,
+.fa-trash {
+    font-size: 1rem;
+}
+
+.movies__container {
+    display: none;
+    padding: 5px 0;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid black;
+    margin: 10px;
+}
+.card__field .field__label {
+    display: inline;
+    width: 40%;
+    text-align: left;
+    margin-right: 5px;
+}
+.card__field {
+    display: flex;
+    padding: 5px;
+    text-align: center; 
+    border-bottom: 0.5px solid black;
+}
+
+@media (max-width: 500px) { 
+    .movies__table {
+        display: none;
+    }
+
+    .movies__container {
+        display: block;
+    }
+}

@@ -1,0 +1,96 @@
+<section>
+    <div class="movieDetailsContainer container disp-flex">
+        <div class="
+            container__description 
+            description 
+            bg-clr-white 
+            disp-flex
+        ">
+            <h1 class="description__name">
+                {{ movieToView.name }}
+            </h1>
+
+            <div class="description__content content disp-flex">
+                <div class="content__row row disp-flex">
+                    <label class="row__label"> 
+                        GENRE
+                    </label>
+
+                    <div class="row__field"> 
+                        {{ movieToView.genre }}
+                    </div>
+                </div>
+
+                <div class="content__row row disp-flex">
+                    <label class="row__label"> 
+                        RELEASE DATE
+                    </label>
+
+                    <div class="row__field"> 
+                        {{ movieToView.releaseDate }}
+                    </div>
+                </div>
+
+                <div class="content__row row disp-flex">
+                    <label class="row__label"> 
+                        RATING
+                    </label>
+
+                    <div class="row__field"> 
+                        {{ movieToView.rating }}
+                    </div>
+                </div>
+
+                <div class="content__row row disp-flex">
+                    <label class="row__label"> 
+                        LANGUAGE
+                    </label>
+
+                    <div class="row__field"> 
+                        {{ movieToView.language }}
+                    </div>
+                </div>
+
+                <div class="content__row row disp-flex">
+                    <label class="row__label"> 
+                        VERDICT INFO
+                    </label>
+
+                    <div class="row__field"> 
+                        {{ movieToView.verdictInfo }}
+                    </div>
+                </div>
+
+                <div class="content__row row disp-flex">
+                    <label class="row__label"> 
+                        DESCRIPTION
+                    </label>
+
+                    <div class="row__field"> 
+                        {{ movieToView.movieDescription }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="container__editOrDeleteMovie editOrDeleteMovie disp-flex
+            ">
+                <a href="#/movie/edit/{{ movieToView.id }}"> 
+                    <i class="fa fa-pencil-square"></i> 
+                </a>
+
+                <button 
+                    class="editOrDeleteMovie__movieDelete delete btn" 
+                    ng-click="deleteMovieConfirmation(movieToView.id)" 
+                >
+                    <i class="fa fa-trash"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<link 
+    rel="stylesheet" 
+    href="movieApp/description/description.css"
+>
+

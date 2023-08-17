@@ -1,0 +1,266 @@
+<section>
+    <h2 class="page-heading"> 
+        {{ action | uppercase }} MOVIE
+    </h2>
+
+    <div class="formContainer container disp-flex">
+        <form 
+            name="upsertForm"
+            class="
+                container__form 
+                form 
+                bg-clr-white 
+                disp-flex
+            "
+            novalidate 
+            ng-submit="submit(action)"    
+        >
+            <button 
+                type="button" 
+                class="form__goBack"
+                ng-click="back()"
+            >
+                <i class="fa fa-long-arrow-left"></i>
+            </button>
+
+            <div class="form__field field">
+                <label 
+                    for="name"
+                    class="field__label"
+                >
+                    MOVIE NAME
+                </label>
+                    
+                <input 
+                    type="text" 
+                    id="name" 
+                    ng-model="name"
+                    name="name" 
+                    placeholder="Movie Name" 
+                    class="field__input"
+                    ng-required="true"
+                />
+
+                <div 
+                    ng-show="upsertForm.name.$invalid && upsertForm.name.$touched" 
+                    class="field__error"
+                >
+                    Enter a valid Movie Name
+                </div>
+            </div>
+
+            <div class="form__field field">
+                <label 
+                    for="genre"
+                    class="field__label"
+                >
+                    GENRE
+                </label>
+
+                <div ng-repeat="genre in genres">    
+                    <input 
+                        type="checkbox" 
+                        id="{{ genre.label }}" 
+                        name="genre" 
+                        ng-model="genre.isChecked"
+                        ng-checked="{{ genre.isChecked }}" 
+                        ng-click="checkFirst.genreCheckFirst = false"
+                    />
+
+                    <label for="{{ genre.label }}">
+                        {{ genre.label }}
+                    </label>
+                </div>
+                
+                <div 
+                    ng-show="getCheckedList(genres).length === 0  && !checkFirst.genreCheckFirst" 
+                    class="field__error"
+                >
+                    Select atleast 1 Genre
+                </div>
+            </div>
+
+            <div class="form__field field">
+                <label 
+                    for="releaseDate"
+                    class="field__label"
+                >
+                    RELEASE DATE
+                </label>
+                    
+                <input 
+                    id="releaseDate" 
+                    type="date" 
+                    name="releaseDate" 
+                    ng-model="releaseDate"
+                    placeholder="Release Date" 
+                    class="field__input"
+                    ng-required="true"
+                />
+
+                <div 
+                    ng-show="upsertForm.releaseDate.$invalid && upsertForm.releaseDate.$touched" 
+                    class="field__error"
+                >
+                    Enter a valid Date
+                </div>
+            </div>
+
+            <div class="form__field field">
+                <label 
+                    for="rating"
+                    class="field__label"
+                >
+                    RATING
+                </label>
+                    
+                <input 
+                    id="rating" 
+                    type="number"
+                    name="rating" 
+                    ng-model="rating"
+                    placeholder="Rating" 
+                    step="0.5" 
+                    min="0"
+                    max="10"
+                    class="field__input"
+                    ng-required="true"
+                />
+
+                <div 
+                    ng-show="upsertForm.rating.$invalid && upsertForm.rating.$touched" 
+                    class="field__error"
+                >
+                    Enter a rating between 0 and 10
+                </div>
+            </div>
+
+            <div class="form__field field" >
+                <label 
+                    for="language"
+                    class="field__label"
+                >
+                    LANGUAGE
+                </label>
+                   
+                <div ng-repeat="language in languages">    
+                    <input 
+                        type="checkbox" 
+                        id="{{ language.label }}" 
+                        name="language" 
+                        ng-model="language.isChecked"
+                        ng-checked="{{ language.isChecked }}" 
+                        ng-click="checkFirst.languageCheckFirst = false"
+                    />
+
+                    <label for="{{ language.label }}">
+                        {{ language.label }}
+                    </label>
+                </div>
+
+                <div 
+                    ng-show="getCheckedList(languages).length === 0  && !checkFirst.languageCheckFirst" 
+                    class="field__error"
+                >
+                    Select atleast 1 Language
+                </div>
+            </div>
+
+            <div class="form__field field">
+                <label 
+                    for="verdictInfo"
+                    class="field__label"
+                >
+                    VERDICT INFO
+                </label>
+                  
+                <div ng-repeat="verdict in verdicts">
+                    <input 
+                        type="radio"
+                        id="{{ verdict.label }}" 
+                        name="verdict" 
+                        ng-model="verdictInfo.selected"
+                        value="{{ verdict.label }}"
+                    />
+                    
+                    <label for="{{ verdict.label }}">
+                        {{ verdict.label }}
+                    </label>
+                </div>
+            </div>
+
+            <div class="form__field field">
+                <label 
+                    for="movieDescription"
+                    class="field__label"
+                >
+                    MOVIE DESCRIPTION
+                </label>
+                    
+                <textarea 
+                    id="movieDescription" 
+                    name="movieDescription"
+                    ng-model="movieDescription"
+                    rows="12" 
+                    placeholder="Movie Description"
+                    class="field__input"
+                    ng-required="true"
+                >
+                </textarea>
+
+                <div 
+                    ng-show="upsertForm.movieDescription.$invalid && upsertForm.movieDescription.$touched" 
+                    class="field__error"
+                >
+                    Enter a valid movie Description
+                </div>
+            </div>
+
+            <div class="form__submit-btn-container container disp-flex">
+                <input 
+                    type="button"
+                    class="container__submit-btn"
+                    value="CANCEL" 
+                    ng-click="back()"
+                />  
+
+                <input 
+                    type="submit"
+                    class="container__submit-btn"
+                    value="{{ action === 'edit' ? 'UPDATE' : 'SAVE MOVIE' }}"
+                    ng-disabled="
+                        upsertForm.name.$invalid || 
+                        upsertForm.releaseDate.$invalid ||
+                        upsertForm.rating.$invalid || 
+                        upsertForm.movieDescription.$invalid || 
+                        verdictInfo.selected === 'none' || 
+                        getCheckedList(genres).length === 0 || 
+                        getCheckedList(languages).length === 0
+                    "
+                /> 
+                
+                <input 
+                    type="submit"
+                    class="container__submit-btn"
+                    ng-show="action === 'add'"
+                    value="SAVE AND CREATE ANOTHER"
+                    ng-disabled="
+                        upsertForm.name.$invalid || 
+                        upsertForm.releaseDate.$invalid ||
+                        upsertForm.rating.$invalid || 
+                        upsertForm.movieDescription.$invalid || 
+                        verdictInfo.selected === 'none' || 
+                        getCheckedList(genres).length === 0 || 
+                        getCheckedList(languages).length === 0
+                    "
+                    ng-click="addAnother()" 
+                />  
+            </div>
+        </form>
+    </div>
+</section>
+
+<link 
+    rel="stylesheet" 
+    href="movieApp/upsert/upsert.css"
+>

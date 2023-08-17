@@ -1,0 +1,68 @@
+a {
+    text-decoration: none;
+    color: #000000;
+}
+
+/* Utility Classes */
+
+.disp-flex {
+    display: flex;
+}
+
+/* ///////////// */
+
+.movieDetailsContainer {
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.description {
+    flex-direction: column;
+    align-items: center;
+    padding: 25px 35px;
+    width: 70%;
+    line-height: 1.4;
+}
+
+.content {
+    flex-direction: column;
+}
+
+.row {
+    margin: 8px;
+}
+
+.row__label {
+    width: 25%;
+    text-transform: capitalize;
+    font-weight: bold;
+    margin-right: 20px;
+}
+
+.row__field {
+    width: 75%;
+    line-height: 1.5;
+}
+
+.btn {
+    border: none;
+    background: none;
+}
+
+.editOrDeleteMovie {
+    justify-content: space-between;
+    width: 100%;
+    margin: 30px auto;
+}
+
+.editOrDeleteMovie .fa {
+    font-size: 1.5rem;
+}
+
+/* 375 x 667 */ 
+@media (max-width: 500px) {
+    .row {
+        flex-direction: column;
+    }
+}

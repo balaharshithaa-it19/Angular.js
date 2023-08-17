@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+
+        <meta 
+            http-equiv="X-UA-Compatible" 
+            content="IE=edge"
+        >
+
+        <meta 
+            name="viewport" 
+            content="width=device-width, initial-scale=1.0"
+        >
+
+        <link 
+            rel="stylesheet"
+            href="movieApp/lib/plugins/css/all.min.css"
+        >
+
+        <link 
+            rel="stylesheet" 
+            href="index.css"
+        >
+
+        <script src="movieApp/lib/angular.min.js"></script>
+
+        <script src="movieApp/lib/angular-route.min.js"></script>
+
+        <script src="movieApp/movieApp.module.js"></script>
+
+        <script src="movieApp/services/movieService.js"></script>
+
+        <script src="movieApp/home/home.controller.js"></script>
+
+        <script src="movieApp/description/description.controller.js"></script>
+
+        <script src="movieApp/upsert/upsert.controller.js"></script>
+
+        <script src="movieApp/directives/search.directive.js"></script>
+
+        <script src="movieApp/directives/sort.directive.js"></script>
+
+        <script src="movieApp/movieApp.config.js"></script>
+
+        <title>Movie Web App</title>
+    </head>
+
+    <body>
+        <header class="header bg-clr-white disp-flex">
+                <div 
+                    class="header__title title disp-flex">
+                    <a href="/">
+                        <img 
+                            src="movieApp/images/v1.png"
+                            alt="logo"
+                            class="title__logo"
+                        />
+                    </a>
+
+                    <h1 class="title__name">
+                        Picture <br/> Talks
+                    </h1>
+                </div>
+        </header>
+
+        <main>
+            <div ng-app="movieApp">
+                <div ng-view></div>
+            </div>
+        </main>
+    </body>
+</html>

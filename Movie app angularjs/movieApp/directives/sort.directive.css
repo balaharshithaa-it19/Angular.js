@@ -1,0 +1,29 @@
+.btn {
+    border: none;
+    background: none;
+}
+
+.sort__label {
+    font-size: 1.2rem;
+    margin-right: 5px;
+}
+
+.fa-sort {
+    font-size: 1.5rem;
+}
+
+.sort__choices {
+    position: fixed;
+    right: 2%;
+    top: 150px;
+    border: 1px solid black;
+    padding: 10px 5px;
+    line-height: 1.5;
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+}
+
+.choice__asc:hover,
+.choice__des:hover {
+    background-color: #a2a2a4;
+    color: #ffffff;
+}
